@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import LoanInfoForm from './LoanInfoForm'
+import RateQuotesTable from './RateQuotesTable'
+import Header from './Header'
 import './App.css';
 
 class App extends Component {
@@ -11,10 +13,16 @@ class App extends Component {
     }
   }
 
+  // may not need rateQuotes in App's state. It is handled in RateQuotesTable's state.
+
   render () {
     return (
       <Fragment>
-        <LoanInfoForm />
+        <Header />
+        <main>
+          <LoanInfoForm />
+          <RateQuotesTable />
+        </main>
       </Fragment>
     )
   }
