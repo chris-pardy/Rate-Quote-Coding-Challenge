@@ -1,1 +1,14 @@
+.currency-field {
+    position: relative;
+}
 
+.currency-sign {
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events:none;
+}
+
+input {
+  padding-left: 25px;
+}

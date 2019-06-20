@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
+import LoanInfoForm from './LoanInfoForm'
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
   render () {
     return (
       <Fragment>
-        <p>Hello!</p>
+        <LoanInfoForm />
       </Fragment>
     )
   }
