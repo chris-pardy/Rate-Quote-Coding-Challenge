@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import LoanInfoForm from './LoanInfoForm'
 import RateQuotesTable from './RateQuotesTable'
+import Header from './Header'
 import './App.css';
 
 class App extends Component {
@@ -17,8 +18,11 @@ class App extends Component {
   render () {
     return (
       <Fragment>
-        <LoanInfoForm />
-        <RateQuotesTable />
+        <Header />
+        <main>
+          <LoanInfoForm />
+          <RateQuotesTable />
+        </main>
       </Fragment>
     )
   }

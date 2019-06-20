@@ -29,7 +29,7 @@ const LoanInfoForm = () => (
       <option value="MultiFamily">Multi-Family</option>
     </select>
 
-    <label for="occupancy">Occupation</label>
+    <label for="occupancy">Occupancy</label>
     <select required id="occupancy" name="occupancy">
       <option value="">Please choose an occupancy type</option>
       <option value="Primary">Primary Residence</option>
