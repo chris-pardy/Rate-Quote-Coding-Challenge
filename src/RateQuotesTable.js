@@ -1,65 +1,62 @@
 import React, { Component, Fragment } from 'react'
+import Table from 'react-bootstrap/Table'
+import Spinner from 'react-bootstrap/Spinner'
+
 import './App.css'
-
-const API = "https://ss6b2ke2ca.execute-api.us-east-1.amazonaws.com/Prod/quotes"
-
-// Format data in table and write tests for this
-// const interestRateFormat = value => {
-//   return value + '%'
-// }
 
 class RateQuotesTable extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      rateQuotes: [],
-      loading: false,
-      error: null
-    }
+    this.state = {}
   }
 
-  componentDidMount() {
-    const { criteria } = this.props
-    this.setState({ loading: true })
+  interestRateFormat = (value) => {
+    return value + '%'
+  }
 
-    fetch(`${API}?loanSize=${criteria.loanSize}&creditScore=${criteria.creditScore}&propertyType=${criteria.propertyType}&occupancy=${criteria.occupancy} `, {
-      method: 'GET',
-      headers: new Headers({
-        'Authorization': 'RG-AUTH 71d50f56-6377-4196-9823-6f61b512899c'
-      })
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error('Sorry, something went wrong. Please try again. ')
-        }
-      })
-      .then(response => this.setState({ rateQuotes: response.rateQuotes, loading: false }))
-      .catch(error => this.setState({ error, loading: false }))
-    }
+  dollarFormat = (value) => {
+    return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+  }
+
+  aprFormat = (value) => {
+    return value.toFixed(3) + '%'
+  }
 
   render () {
-    const { rateQuotes, loading, error } = this.state
+    const { rateQuotes, submitted, loading, error } = this.props
     console.log('here is the state within render:', this.state)
+
+    if (!submitted) {
+      return <p></p>
+    }
 
     if (error) {
       return <p>{error.message}</p>
     }
 
     if (loading) {
-      return <p>Grabbing some great rates from our database</p>
+      return (
+      <Fragment>
+        <p>Grabbing some great rates from our database...</p>
+        <div className="spinner">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Grabbing some great rates from our database...</span>
+          </Spinner>
+        </div>
+      </Fragment>
+    )
     }
 
-    if (rateQuotes.length === 0) {
-      return <p>Sorry, we were not able to find any rates to match that criteria.</p>
+    if (submitted && rateQuotes.length === 0) {
+      return <p>Sorry, no rates match that criteria.</p>
     }
 
     return (
       <Fragment>
-      <table>
-        <tbody>
+      <div className="table-container">
+      <Table striped bordered hover>
+        <thead>
           <tr>
             <th>Lender</th>
             <th>Product</th>
@@ -68,18 +65,21 @@ class RateQuotesTable extends Component {
             <th>Monthly Payment</th>
             <th>APR</th>
           </tr>
+        </thead>
+        <tbody>
           {rateQuotes.map((quote, i) => (
             <tr key={i}>
               <td>{quote.lenderName}</td>
               <td>{quote.loanType}</td>
-              <td>{quote.interestRate}</td>
-              <td>{quote.closingCosts}</td>
-              <td>{quote.monthlyPayment}</td>
-              <td>{quote.apr}</td>
+              <td>{this.interestRateFormat(quote.interestRate)}</td>
+              <td>{this.dollarFormat(quote.closingCosts)}</td>
+              <td>{this.dollarFormat(quote.monthlyPayment)}</td>
+              <td>{this.aprFormat(quote.apr)}</td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
+      </div>
       </Fragment>
     )
   }
