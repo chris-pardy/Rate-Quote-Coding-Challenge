@@ -25,7 +25,6 @@ class App extends Component {
 
     const editedCriteria = Object.assign(this.state.criteria, updatedField)
     this.setState({ criteria: editedCriteria })
-    console.log(this.state)
   }
 
   render () {

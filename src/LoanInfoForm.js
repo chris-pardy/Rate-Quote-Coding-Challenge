@@ -21,7 +21,6 @@ class LoanInfoForm extends Component {
   getRates () {
     const { criteria } = this.props
     this.setState({ loading: true })
-    console.log('your function still ran')
 
     fetch(`${API}?loanSize=${criteria.loanSize}&creditScore=${criteria.creditScore}&propertyType=${criteria.propertyType}&occupancy=${criteria.occupancy} `, {
       method: 'GET',
@@ -41,7 +40,6 @@ class LoanInfoForm extends Component {
     }
 
   handleSubmit = event => {
-    console.log('got to handle submit step!')
     event.preventDefault()
     this.setState({ submitted: true })
     this.getRates()

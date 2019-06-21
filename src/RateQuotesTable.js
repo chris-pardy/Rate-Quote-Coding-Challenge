@@ -25,7 +25,6 @@ class RateQuotesTable extends Component {
 
   render () {
     const { rateQuotes, submitted, loading, error } = this.props
-    console.log('here is the state within render:', this.state)
 
     if (!submitted) {
       return <p></p>
