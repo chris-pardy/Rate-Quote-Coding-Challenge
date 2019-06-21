@@ -3,6 +3,12 @@ main {
   width: 100%;
 }
 
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: rgb(247, 247, 243)
+}
+
 .header {
   background-color: rgb(68, 68, 68);
   display: flex;
@@ -40,10 +46,9 @@ main {
 
 .currency-sign {
   position: absolute;
-  transform: translate(0, -50%);
-  top: 50%;
   pointer-events:none;
   margin-left: 1em;
+  margin-top: .4em;
 }
 
 input {
@@ -64,17 +69,26 @@ Button {
 .table-container {
   display: flex;
   justify-content: center;
-  margin: 2em;
+  margin: 2em 15em;
 }
 
 Table {
   text-align: center;
 }
 
+.table {
+    background-color: white !important;
+}
+
 p {
   text-align: center;
   margin-top: 5em;
   font-family: 'Rubik', sans-serif;
+}
+
+h6 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
 }
 
 .spinner {
@@ -111,11 +125,18 @@ footer .link {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-right: 70px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 170px 300px 170px 300px;
   grid-auto-rows: auto;
   grid-gap: 1rem;
+}
+
+.align-center {
+  margin-top: 5px;
+  align-self: start;
+  justify-self: end;
 }

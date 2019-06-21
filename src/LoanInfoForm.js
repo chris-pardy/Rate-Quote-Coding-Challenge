@@ -36,13 +36,14 @@ class LoanInfoForm extends Component {
           throw new Error('Sorry, something went wrong. Please try again. ')
         }
       })
-      .then(response => this.setState({ rateQuotes: response.rateQuotes, loading: false, submitted: true }))
+      .then(response => this.setState({ rateQuotes: response.rateQuotes, loading: false}))
       .catch(error => this.setState({ error, loading: false }))
     }
 
   handleSubmit = event => {
     console.log('got to handle submit step!')
     event.preventDefault()
+    this.setState({ submitted: true })
     this.getRates()
   }
 
@@ -53,8 +54,12 @@ class LoanInfoForm extends Component {
       <div className="form">
       <Form onSubmit={this.handleSubmit}>
       <div className="grid">
+
+      <div className="align-center">
+        <h6>Loan Size</h6>
+      </div>
+
         <Form.Group>
-        <Form.Label>Loan Size</Form.Label>
         <div className="currency-field">
           <span className="currency-sign">$</span>
           <Form.Control
@@ -68,8 +73,11 @@ class LoanInfoForm extends Component {
         </div>
         </Form.Group>
 
+        <div className="align-center">
+          <h6>Property Type</h6>
+        </div>
+
         <Form.Group>
-        <Form.Label>Property Type</Form.Label>
         <Form.Control as="select"
           required
           id="propertyType"
@@ -84,8 +92,11 @@ class LoanInfoForm extends Component {
         </Form.Control>
         </Form.Group>
 
+        <div className="align-center">
+          <h6>Credit Score</h6>
+        </div>
+
         <Form.Group>
-        <Form.Label>Credit Score</Form.Label>
         <Form.Control
           required
           type="number"
@@ -98,8 +109,11 @@ class LoanInfoForm extends Component {
         />
         </Form.Group>
 
+        <div className="align-center">
+          <h6>Occupancy</h6>
+        </div>
+
         <Form.Group>
-        <Form.Label>Occupancy</Form.Label>
         <Form.Control as="select"
           required
           id="occupancy"
@@ -113,6 +127,8 @@ class LoanInfoForm extends Component {
         </Form.Control>
         </Form.Group>
 
+        <div></div>
+        <div></div>
         <div></div>
 
         <Button type="submit" size="lg" className="grid-right">Quote Rates</Button>
