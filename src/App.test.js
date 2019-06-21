@@ -22,5 +22,5 @@ it('formats dollars', () => {
 it('formats APR', () => {
   const instance = new RateQuotesTable()
   expect(instance.aprFormat(4.8289980348927175
-)).toBe('4.829')
+)).toBe('4.829%')
 })

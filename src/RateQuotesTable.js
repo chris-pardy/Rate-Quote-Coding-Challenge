@@ -16,11 +16,11 @@ class RateQuotesTable extends Component {
   }
 
   dollarFormat = (value) => {
-    return "$" + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+    return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
   }
 
   aprFormat = (value) => {
-    return value.toFixed(3)
+    return value.toFixed(3) + '%'
   }
 
   render () {
@@ -71,10 +71,10 @@ class RateQuotesTable extends Component {
             <tr key={i}>
               <td>{quote.lenderName}</td>
               <td>{quote.loanType}</td>
-              <td>{quote.interestRate}</td>
-              <td>{quote.closingCosts}</td>
-              <td>{quote.monthlyPayment}</td>
-              <td>{quote.apr}</td>
+              <td>{this.interestRateFormat(quote.interestRate)}</td>
+              <td>{this.dollarFormat(quote.closingCosts)}</td>
+              <td>{this.dollarFormat(quote.monthlyPayment)}</td>
+              <td>{this.aprFormat(quote.apr)}</td>
             </tr>
           ))}
         </tbody>
