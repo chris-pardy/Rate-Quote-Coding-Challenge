@@ -30,7 +30,7 @@ const LoanInfoForm = ({ handleChange }) => (
       name="propertyType"
       onChange={handleChange}
     >
-      <option value="">Please choose an property type</option>
+      <option value="">Please choose a property type</option>
       <option value="SingleFamily">Single Family</option>
       <option value="Condo">Condo</option>
       <option value="Townhouse">Townhome</option>

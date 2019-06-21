@@ -1,11 +1,5 @@
-body {
-  background-color: rgb(247, 247, 243)
-}
-
 main {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  position: absolute;
+  margin-bottom: 150px;
   width: 100%;
 }
 
@@ -73,7 +67,6 @@ footer {
   text-align: center;
   font-size: 13px;
   bottom: 0;
-  margin-bottom: 1em;
   position: absolute;
 }
 
