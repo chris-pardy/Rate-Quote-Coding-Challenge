@@ -20,9 +20,10 @@ class RateQuotesTable extends Component {
   }
 
   componentDidMount() {
+    const { criteria } = this.props
     this.setState({ loading: true })
 
-    fetch(`${API}?loanSize=10000&creditScore=700&propertyType=Condo&occupancy=Primary `, {
+    fetch(`${API}?loanSize=${criteria.loanSize}&creditScore=${criteria.creditScore}&propertyType=${criteria.propertyType}&occupancy=${criteria.occupancy} `, {
       method: 'GET',
       headers: new Headers({
         'Authorization': 'RG-AUTH 71d50f56-6377-4196-9823-6f61b512899c'
