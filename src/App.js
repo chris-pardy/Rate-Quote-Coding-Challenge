@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import LoanInfoForm from './LoanInfoForm'
-import RateQuotesTable from './RateQuotesTable'
 import Header from './Header'
 import Footer from './Footer'
 import './App.css';
@@ -35,8 +34,8 @@ class App extends Component {
       <Fragment>
         <Header />
         <main>
-          <LoanInfoForm handleChange={this.handleChange}/>
-          <RateQuotesTable criteria={criteria}/>
+          <LoanInfoForm
+          criteria={criteria} handleChange={this.handleChange}/>
         </main>
         <Footer />
       </Fragment>

@@ -1,48 +1,24 @@
 import React, { Component, Fragment } from 'react'
 import './App.css'
 
-const API = "https://ss6b2ke2ca.execute-api.us-east-1.amazonaws.com/Prod/quotes"
-
-// Format data in table and write tests for this
-// const interestRateFormat = value => {
-//   return value + '%'
-// }
-
 class RateQuotesTable extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      rateQuotes: [],
       loading: false,
       error: null
     }
   }
 
-  componentDidMount() {
-    const { criteria } = this.props
-    this.setState({ loading: true })
-
-    fetch(`${API}?loanSize=${criteria.loanSize}&creditScore=${criteria.creditScore}&propertyType=${criteria.propertyType}&occupancy=${criteria.occupancy} `, {
-      method: 'GET',
-      headers: new Headers({
-        'Authorization': 'RG-AUTH 71d50f56-6377-4196-9823-6f61b512899c'
-      })
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error('Sorry, something went wrong. Please try again. ')
-        }
-      })
-      .then(response => this.setState({ rateQuotes: response.rateQuotes, loading: false }))
-      .catch(error => this.setState({ error, loading: false }))
-    }
-
   render () {
-    const { rateQuotes, loading, error } = this.state
+    const { loading, error } = this.state
+    const { rateQuotes, submitted } = this.props
     console.log('here is the state within render:', this.state)
+
+    if (!submitted) {
+      return <p>Enter your info above</p>
+    }
 
     if (error) {
       return <p>{error.message}</p>
@@ -52,8 +28,8 @@ class RateQuotesTable extends Component {
       return <p>Grabbing some great rates from our database</p>
     }
 
-    if (rateQuotes.length === 0) {
-      return <p>Sorry, we were not able to find any rates to match that criteria.</p>
+    if (submitted && rateQuotes.length === 0) {
+      return <p>Sorry, no rates match that criteria.</p>
     }
 
     return (
