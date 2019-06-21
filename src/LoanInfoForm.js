@@ -3,13 +3,13 @@ import './App.css'
 
 const LoanInfoForm = () => (
   <form>
-    <label for="loanSize">Loan Size</label>
+    <label htmlFor="loanSize">Loan Size</label>
     <div className="currency-field">
       <span className="currency-sign">$</span>
       <input required type="number" id="loanSize" name="loanSize" />
     </div>
 
-    <label for="creditScore">Credit Score</label>
+    <label htmlFor="creditScore">Credit Score</label>
     <input
       required
       type="number"
@@ -20,7 +20,7 @@ const LoanInfoForm = () => (
       name="creditScore"
     />
 
-    <label for="propertyType">Property Type</label>
+    <label htmlFor="propertyType">Property Type</label>
     <select required id="propertyType" name="propertyType">
       <option value="">Please choose an property type</option>
       <option value="SingleFamily">Single Family</option>
@@ -29,7 +29,7 @@ const LoanInfoForm = () => (
       <option value="MultiFamily">Multi-Family</option>
     </select>
 
-    <label for="occupancy">Occupancy</label>
+    <label htmlFor="occupancy">Occupancy</label>
     <select required id="occupancy" name="occupancy">
       <option value="">Please choose an occupancy type</option>
       <option value="Primary">Primary Residence</option>
