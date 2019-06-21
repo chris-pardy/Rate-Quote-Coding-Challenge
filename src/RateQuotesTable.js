@@ -11,6 +11,18 @@ class RateQuotesTable extends Component {
     this.state = {}
   }
 
+  interestRateFormat = (value) => {
+    return value + '%'
+  }
+
+  dollarFormat = (value) => {
+    return "$" + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+  }
+
+  aprFormat = (value) => {
+    return value.toFixed(3)
+  }
+
   render () {
     const { rateQuotes, submitted, loading, error } = this.props
     console.log('here is the state within render:', this.state)
