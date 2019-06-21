@@ -10,8 +10,15 @@ The requirements are to build a webpage using React that allows the user to ente
 * HTML5
 * CSS3
 * [React](https://reactjs.org/)
-* [React-Bootstrap](https://react-bootstrap.github.io/)
+* [React-Bootstrap](https://react-bootstrap.github.io/) - used for component styling
 * [FontAwesome](https://www.npmjs.com/package/@fortawesome/react-fontawesome) - Used to generate phone icon in header
+* [Google Fonts](https://fonts.google.com/)
+
+I chose to use React-Bootstrap for styling since the components for Forms and Tables are very useful for spinning up a quick proof of concept based on the mockup provided.
+
+I chose to use FontAwesome to replicate the phone icon on Own Up's headers (found at https://questionnaire.ownup.com) as a quick solution, rather than using an SVG image. Again, it was a quick solution that allowed me to build the page quickly.
+
+I used Google Fonts to mimic the fonts on Own Up's website. font-family: 'Open Sans is similar to Arial (used in input and select fields) and font-family: 'Rubik' is similar to Graphic (one of the main fonts used on Own Up's website).
 
 ## Screenshots
 
