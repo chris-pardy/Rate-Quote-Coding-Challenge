@@ -6,6 +6,7 @@ main {
   margin-top: 100px;
   margin-bottom: 100px;
   position: absolute;
+  width: 100%;
 }
 
 .header {
@@ -35,18 +36,12 @@ main {
   margin-right: 20px;
 }
 
-a {
-  color: #fff;
-  text-decoration-color: #fff;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #3533df;
-}
-
 .currency-field {
-    position: relative;
+  position: relative;
+}
+
+.currency-field-input {
+  text-indent: 1.5em;
 }
 
 .currency-sign {
@@ -54,10 +49,22 @@ a:hover {
   transform: translate(0, -50%);
   top: 50%;
   pointer-events:none;
+  margin-left: 1em;
 }
 
 input {
   padding-left: 25px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+select {
+  font-family: 'Open Sans', sans-serif;
+}
+
+Button {
+  font-family: 'Rubik', sans-serif;
+  background-color: rgb(68, 68, 68) !important;
+  border: rgb(68, 68, 68) !important;
 }
 
 footer {
@@ -83,4 +90,17 @@ footer .footer-links {
 
 footer .link {
   margin: auto 1em;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
 }

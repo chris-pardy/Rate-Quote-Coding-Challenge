@@ -1,12 +1,18 @@
 import React from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import './App.css'
 
 const LoanInfoForm = ({ handleChange }) => (
-  <form>
-    <label htmlFor="loanSize">Loan Size</label>
+  <div className="form">
+  <Form>
+  <div className="grid">
+    <Form.Group>
+    <Form.Label>Loan Size</Form.Label>
     <div className="currency-field">
       <span className="currency-sign">$</span>
-      <input
+      <Form.Control
+      className="currency-field-input"
         required
         type="number"
         id="loanSize"
@@ -14,21 +20,11 @@ const LoanInfoForm = ({ handleChange }) => (
         onChange={handleChange}
       />
     </div>
+    </Form.Group>
 
-    <label htmlFor="creditScore">Credit Score</label>
-    <input
-      required
-      type="number"
-      step="1"
-      min="300"
-      max="800"
-      id="creditScore"
-      name="creditScore"
-      onChange={handleChange}
-    />
-
-    <label htmlFor="propertyType">Property Type</label>
-    <select
+    <Form.Group>
+    <Form.Label>Property Type</Form.Label>
+    <Form.Control as="select"
       required
       id="propertyType"
       name="propertyType"
@@ -39,10 +35,26 @@ const LoanInfoForm = ({ handleChange }) => (
       <option value="Condo">Condo</option>
       <option value="Townhouse">Townhome</option>
       <option value="MultiFamily">Multi-Family</option>
-    </select>
+    </Form.Control>
+    </Form.Group>
 
-    <label htmlFor="occupancy">Occupancy</label>
-    <select
+    <Form.Group>
+    <Form.Label>Credit Score</Form.Label>
+    <Form.Control
+      required
+      type="number"
+      step="1"
+      min="300"
+      max="800"
+      id="creditScore"
+      name="creditScore"
+      onChange={handleChange}
+    />
+    </Form.Group>
+
+    <Form.Group>
+    <Form.Label>Occupancy</Form.Label>
+    <Form.Control as="select"
       required
       id="occupancy"
       name="occupancy"
@@ -52,10 +64,15 @@ const LoanInfoForm = ({ handleChange }) => (
       <option value="Primary">Primary Residence</option>
       <option value="Secondary">Second Home</option>
       <option value="Investment">Investment Property</option>
-    </select>
+    </Form.Control>
+    </Form.Group>
 
-    <button type="submit">Quote Rates</button>
-  </form>
+    <div></div>
+
+    <Button type="submit" size="lg" className="grid-right">Quote Rates</Button>
+    </div>
+  </Form>
+  </div>
 )
 
 export default LoanInfoForm

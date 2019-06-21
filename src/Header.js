@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => (
-  <Navbar className="header">
+  <Navbar className="header" variant="dark">
     <Navbar.Brand className="logo" target="_blank" href="https://www.ownup.com/">
       <img src={logo} height="40" alt="Own Up Logo"/>
     </Navbar.Brand>
