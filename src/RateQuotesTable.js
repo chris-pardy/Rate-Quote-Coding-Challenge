@@ -1,23 +1,22 @@
 import React, { Component, Fragment } from 'react'
+import Table from 'react-bootstrap/Table'
+import Spinner from 'react-bootstrap/Spinner'
+
 import './App.css'
 
 class RateQuotesTable extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      loading: false,
-      error: null
-    }
+    this.state = {}
   }
 
   render () {
-    const { loading, error } = this.state
-    const { rateQuotes, submitted } = this.props
+    const { rateQuotes, submitted, loading, error } = this.props
     console.log('here is the state within render:', this.state)
 
     if (!submitted) {
-      return <p>Enter your info above</p>
+      return <p></p>
     }
 
     if (error) {
@@ -25,7 +24,16 @@ class RateQuotesTable extends Component {
     }
 
     if (loading) {
-      return <p>Grabbing some great rates from our database</p>
+      return (
+      <Fragment>
+        <p>Grabbing some great rates from our database...</p>
+        <div className="spinner">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Grabbing some great rates from our database...</span>
+          </Spinner>
+        </div>
+      </Fragment>
+    )
     }
 
     if (submitted && rateQuotes.length === 0) {
@@ -34,8 +42,9 @@ class RateQuotesTable extends Component {
 
     return (
       <Fragment>
-      <table>
-        <tbody>
+      <div className="table-container">
+      <Table striped bordered hover>
+        <thead>
           <tr>
             <th>Lender</th>
             <th>Product</th>
@@ -44,6 +53,8 @@ class RateQuotesTable extends Component {
             <th>Monthly Payment</th>
             <th>APR</th>
           </tr>
+        </thead>
+        <tbody>
           {rateQuotes.map((quote, i) => (
             <tr key={i}>
               <td>{quote.lenderName}</td>
@@ -55,7 +66,8 @@ class RateQuotesTable extends Component {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
+      </div>
       </Fragment>
     )
   }

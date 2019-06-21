@@ -61,6 +61,27 @@ Button {
   border: rgb(68, 68, 68) !important;
 }
 
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+}
+
+Table {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  margin-top: 5em;
+  font-family: 'Rubik', sans-serif;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   color: rgb(20, 63, 61);
   width: 100%;
@@ -68,6 +89,7 @@ footer {
   font-size: 13px;
   bottom: 0;
   position: absolute;
+  margin-bottom: .5em;
 }
 
 footer a {

@@ -12,7 +12,9 @@ class LoanInfoForm extends Component {
 
     this.state = {
       rateQuotes: [],
-      submitted: false
+      submitted: false,
+      loading: false,
+      error: null
     }
   }
 
@@ -74,7 +76,7 @@ class LoanInfoForm extends Component {
           name="propertyType"
           onChange={handleChange}
         >
-          <option value="">Please choose a property type</option>
+          <option value="">Choose a property type</option>
           <option value="SingleFamily">Single Family</option>
           <option value="Condo">Condo</option>
           <option value="Townhouse">Townhome</option>
@@ -104,7 +106,7 @@ class LoanInfoForm extends Component {
           name="occupancy"
           onChange={handleChange}
         >
-          <option value="">Please choose an occupancy type</option>
+          <option value="">Choose an occupancy type</option>
           <option value="Primary">Primary Residence</option>
           <option value="Secondary">Second Home</option>
           <option value="Investment">Investment Property</option>
@@ -118,7 +120,12 @@ class LoanInfoForm extends Component {
       </Form>
       </div>
 
-      <RateQuotesTable rateQuotes={this.state.rateQuotes} submitted={this.state.submitted}/>
+      <RateQuotesTable
+        rateQuotes={this.state.rateQuotes}
+        submitted={this.state.submitted}
+        loading={this.state.loading}
+        error={this.state.error}
+      />
       </Fragment>
     )
   }
