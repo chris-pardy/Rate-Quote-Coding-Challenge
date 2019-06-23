@@ -19,11 +19,7 @@ export const getRatesThunk = ({ loanSize, creditScore, propertyType, occupancy }
         throw new Error('Sorry, something went wrong. Please try again. ')
       }
     })
-    .then(
-      response => {
-        console.log(`got resposne ${JSON.stringify(response.rateQuotes)}`);
-      }
-    )
+    .then(response => dispatch(ratesLoaded(response)))
     .catch(error => {
       console.error(error);
     })
@@ -38,5 +34,13 @@ export const getRates = ({ loanSize, creditScore, propertyType, occupancy }) => 
     creditScore,
     propertyType,
     occupancy
+  }
+})
+
+export const RatesLoadedType = 'RatesLoaded';
+export const ratesLoaded = ({ rateQuotes }) => ({
+  type: RatesLoadedType,
+  payload: {
+    rateQuotes
   }
 })
