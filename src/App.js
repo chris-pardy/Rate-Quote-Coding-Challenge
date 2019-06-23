@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import { Provider } from 'react-redux';
+import { store } from './redux'; 
 import LoanInfoForm from './LoanInfoForm'
 import Header from './Header'
 import Footer from './Footer'
@@ -30,14 +32,16 @@ class App extends Component {
   render () {
     const { criteria } = this.state
     return (
-      <Fragment>
-        <Header />
-        <main>
-          <LoanInfoForm
-          criteria={criteria} handleChange={this.handleChange}/>
-        </main>
-        <Footer />
-      </Fragment>
+      <Provider store={store}>
+        <Fragment>
+          <Header />
+          <main>
+            <LoanInfoForm
+            criteria={criteria} handleChange={this.handleChange}/>
+          </main>
+          <Footer />
+        </Fragment>
+      </Provider>
     )
   }
 }
